@@ -25,7 +25,6 @@ import ="book.*"
 <body>
 <%@ include file = "common/header.jsp" %> 
 	<h3>도서목록</h3>
-	
 	<br>
 	<%if(bookList.size() == 0){ %>
 		<p>등록되어있는 도서가 없습니다.</p>	

@@ -46,7 +46,6 @@ public class WookCartService implements CartService {
 	@Override
 	public boolean clear(int loggedMemberNo) {
 		int result =cartDao.deleteAll(loggedMemberNo);
-		
 		return result>0?true:false;
 	}
 
