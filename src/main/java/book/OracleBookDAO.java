@@ -21,8 +21,10 @@ public class OracleBookDAO implements BookDAO {
 
 			jdbc.rs = jdbc.pstmt.executeQuery();
 			if (jdbc.rs.next()) {
-				book = new Book(jdbc.rs.getInt("id"), jdbc.rs.getString("name"), jdbc.rs.getString("author"),
-						jdbc.rs.getInt("price_won"));
+				book = new Book(jdbc.rs.getInt("id"),
+								jdbc.rs.getString("name"),
+								jdbc.rs.getString("author"),
+								jdbc.rs.getInt("price_won"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
