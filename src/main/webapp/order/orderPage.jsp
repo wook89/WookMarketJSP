@@ -6,7 +6,7 @@ import="member.*"
     pageEncoding="UTF-8"%>
 <%@ include file ="/common/isLoggedIn.jsp" %>
 <%
-	CartService cartService = new WookCartService(new OracleCartDAO());
+	CartService cartService = new WookCartService(new HashMapCartDAO());
 	BookService bookService = new OracleBookService(new OracleBookDAO());
 	MemberService memberService = new OracleMemberService(new OracleMemberDAO());
 	List<CartItem> itemList = cartService.listAll(memberNo);

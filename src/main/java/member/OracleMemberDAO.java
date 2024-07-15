@@ -23,8 +23,17 @@ public class OracleMemberDAO implements MemberDAO {
 
 			jdbc.rs = jdbc.pstmt.executeQuery();
 			if (jdbc.rs.next()) {
-				member = new Member(jdbc.rs.getInt("no"), jdbc.rs.getString("id"), jdbc.rs.getString("password"),
-						jdbc.rs.getString("nickname"), jdbc.rs.getDate("regdate"));
+				member = new Member(
+						jdbc.rs.getInt("no"),
+						jdbc.rs.getString("id"),
+						jdbc.rs.getString("password"),
+						jdbc.rs.getString("nickname"),
+						jdbc.rs.getDate("regdate")
+						);
+						member.setMobile(jdbc.rs.getString("mobile"));
+						member.setAddress(jdbc.rs.getString("address"));
+						member.setEmail(jdbc.rs.getString("email"));
+						
 			}
 
 		} catch (SQLException e) {
@@ -50,8 +59,16 @@ public class OracleMemberDAO implements MemberDAO {
 			jdbc.pstmt.setString(2, pw);
 			jdbc.rs = jdbc.pstmt.executeQuery();
 			if (jdbc.rs.next()) {
-				member = new Member(jdbc.rs.getInt("no"), jdbc.rs.getString("id"), jdbc.rs.getString("password"),
-						jdbc.rs.getString("nickname"), jdbc.rs.getDate("regdate"));
+				member = new Member(
+						jdbc.rs.getInt("no"),
+						jdbc.rs.getString("id"),
+						jdbc.rs.getString("password"),
+						jdbc.rs.getString("nickname"),
+						jdbc.rs.getDate("regdate")
+						);
+				member.setMobile(jdbc.rs.getString("mobile"));
+				member.setAddress(jdbc.rs.getString("address"));
+				member.setEmail(jdbc.rs.getString("email"));
 			}
 
 		} catch (SQLException e) {
@@ -80,10 +97,17 @@ public class OracleMemberDAO implements MemberDAO {
 			// SQL¹® ½ÇÇà
 			jdbc.rs = jdbc.pstmt.executeQuery();
 			while (jdbc.rs.next()) {
-				Member member = new Member(jdbc.rs.getInt("no"), jdbc.rs.getString("id"), jdbc.rs.getString("password"),
-						jdbc.rs.getString("nickname"), jdbc.rs.getDate("regDate"));
+				Member member = new Member(
+						jdbc.rs.getInt("no"),
+						jdbc.rs.getString("id"),
+						jdbc.rs.getString("password"),
+						jdbc.rs.getString("nickname"),
+						jdbc.rs.getDate("regDate")
+						);
+				member.setMobile(jdbc.rs.getString("mobile"));
+				member.setAddress(jdbc.rs.getString("address"));
+				member.setEmail(jdbc.rs.getString("email"));
 				memberList.add(member);
-
 			}
 
 		} catch (SQLException e) {

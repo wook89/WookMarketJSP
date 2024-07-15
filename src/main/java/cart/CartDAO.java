@@ -15,6 +15,6 @@ public interface CartDAO {
 	//D
 	int delete(int memberNo, int cartId);
 	int deleteAll(int memberNo);
-	int deleteByBookId(int loggedMemberNo);
+	int deleteByBookId(int bookId);
 	
 }

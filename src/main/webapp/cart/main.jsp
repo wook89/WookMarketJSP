@@ -7,7 +7,7 @@ import="java.util.*"
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
-	CartService cartService = new WookCartService(new OracleCartDAO());
+	CartService cartService = new WookCartService(new HashMapCartDAO());
 	List<CartItem> itemList = cartService.listAll(memberNo);
 %>    
 <!DOCTYPE html>

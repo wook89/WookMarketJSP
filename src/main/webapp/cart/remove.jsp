@@ -8,7 +8,7 @@ import ="cart.*"
 			response.sendRedirect(request.getContextPath()+"/common/errorPage.jsp?cartIdErr=1");
 			return;
 	}
-	CartService service = new WookCartService(new OracleCartDAO());
+	CartService service = new WookCartService(new HashMapCartDAO());
 	if(service.remove(memberNo,Integer.parseInt(idStr)))
 		response.sendRedirect(request.getContextPath()+"/cart/main.jsp");
 	else

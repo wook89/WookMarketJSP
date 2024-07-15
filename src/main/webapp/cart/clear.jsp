@@ -3,7 +3,7 @@ import ="cart.*"
     pageEncoding="UTF-8"%>
 <%@ include file="/common/isLoggedIn.jsp" %>
 <%
-	CartService service = new WookCartService(new OracleCartDAO());
+	CartService service = new WookCartService(new HashMapCartDAO());
 	
 	if(service.clear(memberNo)){
 		response.sendRedirect(request.getContextPath()+"/cart/main.jsp");

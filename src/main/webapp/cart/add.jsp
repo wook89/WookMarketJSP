@@ -3,7 +3,7 @@ import="cart.*"
     pageEncoding="UTF-8"%>
 <%@ include file="/common/isLoggedIn.jsp" %>
 <% 
-	CartService service = new WookCartService(new OracleCartDAO());
+	CartService service = new WookCartService(new HashMapCartDAO());
 	String bookId = request.getParameter("bookId");
 	if(bookId == null || bookId.isEmpty()){
 		response.sendRedirect(request.getContextPath()+"/common/errorPage.jsp?bookIdErr=1");
