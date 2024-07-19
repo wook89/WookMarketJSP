@@ -6,8 +6,21 @@ import java.util.List;
 
 public class HashMapCartDAO implements CartDAO {
 	
-	static private HashMap<Integer, CartItem> cartTable = new HashMap<>();
-	static private int cart_seq = 0;
+	private static HashMapCartDAO instance = null;
+	
+	private HashMap<Integer, CartItem> cartTable = new HashMap<>();
+	private int cart_seq = 0;
+	
+	private HashMapCartDAO() {
+		System.out.println("HashMapCartDAO객체가 생성되었습니다.");
+	}
+	
+	public static HashMapCartDAO getInstance() {
+		if(instance == null) {
+			instance = new HashMapCartDAO();
+		}
+		return instance;
+	}
 	@Override
 	public int insert(CartItem item) {
 		int result = 0;

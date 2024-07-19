@@ -10,7 +10,7 @@ import = "cart.*"
 		response.sendRedirect(request.getContextPath()+"/common/errorPage.jsp?cartIdErr=1");
 		return;
 	}
-	CartService service = new WookCartService(new HashMapCartDAO());
+	CartService service = new WookCartService(HashMapCartDAO.getInstance());
 	
 	if(service.update(Integer.parseInt(idStr),memberNo,Integer.parseInt(quanStr))){
 		response.sendRedirect(request.getContextPath()+"/cart/main.jsp");

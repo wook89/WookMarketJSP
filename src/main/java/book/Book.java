@@ -5,15 +5,16 @@ public class Book {
 	private String name;
 	private String author;
 	private int price;
+	private int instock;
 	
-	public Book(int id, String name, String author, int price) {
+	public Book(int id, String name, String author, int price, int instock) {
 		this.id = id;
 		this.name = name;
 		this.author = author;
 		this.price = price;
 	}
 
-	public Book(String name, String author, int price) {
+	public Book(String name, String author, int price, int instock) {
 		this.name = name;
 		this.author = author;
 		this.price = price;
@@ -50,11 +51,15 @@ public class Book {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public int getInstock() {
+		return instock;
+	}
+	public void setInstock(int instock) {
+		this.instock = instock;
+	}
 	@Override
 	public String toString() {
-		return "Book [ID= "+id+", NAME= "+name+
-				", AUTHOR= "+author+", PRICE= "+price+"]";
+		return "Book [id=" + id + ", name=" + name + ", author=" + author + ", price=" + price + ", instock=" + instock
+				+ "]";
 	}
-	
-	
 }

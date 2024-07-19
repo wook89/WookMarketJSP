@@ -22,7 +22,7 @@ pageEncoding="UTF-8"%>
 		memberService.editAdditionInfo(memberNo,mobile,email,address);
 	}
 	
-	CartService cartService = new WookCartService(new HashMapCartDAO());
+	CartService cartService = new WookCartService(HashMapCartDAO.getInstance());
 	if(cartService.clear(memberNo)){
 %>
 		<script>

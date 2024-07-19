@@ -25,7 +25,7 @@ public class OracleBookService implements BookService {
 	public boolean remove(int id) {
 		if(bookDao.selectBook(id) == null) return false;
 		
-		CartService cartService = new WookCartService(new HashMapCartDAO());
+		CartService cartService = new WookCartService(HashMapCartDAO.getInstance());
 		List<CartItem> itemList = cartService.readByBookId(id);
 		System.out.println(itemList.size());
 		if(itemList.size() > 0) {

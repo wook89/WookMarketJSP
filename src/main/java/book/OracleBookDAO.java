@@ -24,7 +24,8 @@ public class OracleBookDAO implements BookDAO {
 				book = new Book(jdbc.rs.getInt("id"),
 								jdbc.rs.getString("name"),
 								jdbc.rs.getString("author"),
-								jdbc.rs.getInt("price_won"));
+								jdbc.rs.getInt("price_won"),
+								jdbc.rs.getInt("instock"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -47,8 +48,11 @@ public class OracleBookDAO implements BookDAO {
 
 			jdbc.rs = jdbc.pstmt.executeQuery();
 			while (jdbc.rs.next()) {
-				Book book = new Book(jdbc.rs.getInt("id"), jdbc.rs.getString("name"), jdbc.rs.getString("author"),
-						jdbc.rs.getInt("price_won"));
+				Book book = new Book(jdbc.rs.getInt("id"),
+								jdbc.rs.getString("name"),
+								jdbc.rs.getString("author"),
+								jdbc.rs.getInt("price_won"),
+								jdbc.rs.getInt("instock"));
 				bookList.add(book);
 			}
 		} catch (SQLException e) {
@@ -63,14 +67,15 @@ public class OracleBookDAO implements BookDAO {
 		// DB join
 		JDBConnection jdbc = new JDBConnection();
 		// create SQL
-		String sql = new StringBuilder().append("insert into book(id,name,author,price_won)")
-				.append("values(book_seq.nextval, ? , ? , ?)").toString();
+		String sql = new StringBuilder().append("insert into book(id,name,author,price_won,instock)")
+				.append("values(book_seq.nextval, ? , ? , ?, ?)").toString();
 		int result = 0;
 		try {
 			jdbc.pstmt = jdbc.conn.prepareStatement(sql);
 			jdbc.pstmt.setString(1, book.getName());
 			jdbc.pstmt.setString(2, book.getAuthor());
 			jdbc.pstmt.setInt(3, book.getPrice());
+			jdbc.pstmt.setInt(4, book.getInstock());
 
 			result = jdbc.pstmt.executeUpdate();
 			if (result == 1) {
@@ -88,7 +93,7 @@ public class OracleBookDAO implements BookDAO {
 	public int updateBook(Book book) {
 		JDBConnection jdbc = new JDBConnection();
 		int result = 0;
-		String sql = new StringBuilder().append("update book ").append("set name = ?,author=?,price_won = ? ")
+		String sql = new StringBuilder().append("update book ").append("set name = ?,author=?,price_won = ?,instock= ? ")
 				.append("where id=?").toString();
 		try {
 			jdbc.pstmt = jdbc.conn.prepareStatement(sql);
@@ -96,6 +101,7 @@ public class OracleBookDAO implements BookDAO {
 			jdbc.pstmt.setString(2, book.getAuthor());
 			jdbc.pstmt.setInt(3, book.getPrice());
 			jdbc.pstmt.setInt(4, book.getId());
+			jdbc.pstmt.setInt(5, book.getInstock());
 
 			result = jdbc.pstmt.executeUpdate();
 			System.out.println(result + "행이 수정 되었습니다.");
